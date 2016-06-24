@@ -5,18 +5,22 @@
  */
 package quiz.service;
 
+import java.util.List;
+import quiz.dao.QuestionDAO;
+import quiz.entity.Question;
+
 /**
  *
  * @author admin
  */
 public class QuestionService {
 
-    public void AjouterQuestion() {
-
+    public void AjouterQuestion(Question q) {
+        new QuestionDAO().AjouterQuestion(q);
     }
 
-    public void ListerQuestions() {
-
+    public List<Question> ListerQuestions() {
+        return new QuestionDAO().ListerQuestions();
     }
 
     public void RepondreQuestionSuivante() {

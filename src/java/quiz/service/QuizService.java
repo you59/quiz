@@ -5,21 +5,28 @@
  */
 package quiz.service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import quiz.dao.QuizDAO;
+import quiz.entity.Quiz;
+
 /**
  *
  * @author admin
  */
 public class QuizService {
 
-    public void DemarrerQuiz() {
-
+    public Quiz DemarrerQuiz(long idQuiz) {
+        QuizDAO q = new QuizDAO();
+        return q.DemarrerQuiz(idQuiz);
     }
 
-    public void AjouterQuiz() {
-
+    public void AjouterQuiz(Quiz quiz) {
+        QuizDAO q = new QuizDAO();
+        q.AjouterQuiz(quiz);
     }
 
     public void CalculerScore() {
-
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
     }
 }

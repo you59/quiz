@@ -19,6 +19,7 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Question implements Serializable {
+
     private String titre;
     private int ordre;
     private String rep1;
@@ -82,10 +83,18 @@ public class Question implements Serializable {
     public void setNumRepCorrecte(int numRepCorrecte) {
         this.numRepCorrecte = numRepCorrecte;
     }
-    
-    /*@ManyToOne
-    @JoinColumn(name="quiz_id")
-    private Quiz quiz;*/
+
+    @ManyToOne
+    @JoinColumn(name = "quiz_id")
+    private Quiz quiz;
+
+    public Quiz getQuiz() {
+        return quiz;
+    }
+
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
+    }
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -124,5 +133,5 @@ public class Question implements Serializable {
     public String toString() {
         return "quiz.entity.Question[ id=" + id + " ]";
     }
-    
+
 }

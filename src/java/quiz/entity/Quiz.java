@@ -6,6 +6,8 @@
 package quiz.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,15 +20,24 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Quiz implements Serializable {
+
     private String nom;
-    
-    /*@OneToMany(mappedBy="quiz")
-    private Question question;*/
-    
+
+    @OneToMany(mappedBy = "quiz")
+    private List<Question> question = new ArrayList<>();
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    public List<Question> getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(List<Question> question) {
+        this.question = question;
+    }
 
     public String getNom() {
         return nom;
@@ -68,5 +79,5 @@ public class Quiz implements Serializable {
     public String toString() {
         return "quiz.entity.Quiz[ id=" + id + " ]";
     }
-    
+
 }

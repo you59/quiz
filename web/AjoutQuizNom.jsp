@@ -1,6 +1,6 @@
 <%-- 
-    Document   : FormCo
-    Created on : 24 juin 2016, 14:42:14
+    Document   : AjoutQuizNom
+    Created on : 24 juin 2016, 15:53:38
     Author     : admin
 --%>
 
@@ -12,10 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form method="post" action="CoServlet">
-            Identifiant: <input type="text" name="identif" /><br><br>
-            Mot de passe: <input type="text" name="mdp" /><br><br>
+        <form method="post" action="ajout_quiz" >
+            <input type="text" name="nom" />
             <input type="submit" />
+            
         </form>
     </body>
 </html>
