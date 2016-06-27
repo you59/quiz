@@ -31,4 +31,23 @@ public class QuestionService {
 
     }
 
+    public Question trouverQuestSuiv(Long idQuiz, long ordreDernQuestion) {
+
+        // Récup liste questions du quiz, triees par ordre
+        List<Question> lq = new QuestionDAO().listeQuestionsTrieesParOrdre(idQuiz);
+
+        // Exception si aucune question
+        if (lq.size() == 0) {
+            throw new RuntimeException("Aucune question dans le quiz");
+        }
+
+        // Trouve question suivante
+        for (Question question:lq) {
+            if (question.getOrdre() > ordreDernQuestion) {
+                return question;
+            }
+        }
+
+        return null;
+    }
 }

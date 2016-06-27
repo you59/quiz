@@ -8,7 +8,9 @@ package quiz.dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import quiz.entity.Question;
+import quiz.entity.Quiz;
 
 /**
  *
@@ -36,5 +38,12 @@ public class QuestionDAO {
     public void ListerQuestionnaires() {
 
     }
-
+    
+    public List<Question> listeQuestionsTrieesParOrdre(Long idQuiz) {
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        Query query=em.createQuery("SELECT q FROM Question q WHERE q.quiz.id=:q ORDER BY q.ordre" );
+        query.setParameter("q", idQuiz);
+        return query.getResultList();
+    }
+  
 }

@@ -5,6 +5,7 @@
  */
 package quiz.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
@@ -33,5 +34,11 @@ public class QuizDAO {
     public void CalculerScore() {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
 
+    }
+
+    public List<Quiz> ListerQuiz() {
+         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+         Query query=em.createQuery("SELECT q FROM Quiz q");
+        return query.getResultList();
     }
 }

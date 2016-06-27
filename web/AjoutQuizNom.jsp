@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
+    <body>Ajoutez un nom au Quiz
         <form method="post" action="ajout_quiz" >
             <input type="text" name="nom" />
             <input type="submit" />

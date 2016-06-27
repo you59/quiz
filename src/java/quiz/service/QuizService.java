@@ -5,6 +5,7 @@
  */
 package quiz.service;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import quiz.dao.QuizDAO;
@@ -16,9 +17,14 @@ import quiz.entity.Quiz;
  */
 public class QuizService {
 
-    public Quiz DemarrerQuiz(long idQuiz) {
+    public Quiz RecupQuiz(long idQuiz) {
         QuizDAO q = new QuizDAO();
         return q.DemarrerQuiz(idQuiz);
+    }
+    
+    public List<Quiz> ListerQuiz() {
+        QuizDAO q = new QuizDAO();
+        return q.ListerQuiz();
     }
 
     public void AjouterQuiz(Quiz quiz) {

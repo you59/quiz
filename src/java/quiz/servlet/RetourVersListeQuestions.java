@@ -6,6 +6,7 @@
 package quiz.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,34 +14,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import quiz.entity.Question;
-import quiz.entity.Quiz;
 import quiz.service.QuestionService;
-import quiz.service.QuizService;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "AjoutQuiz", urlPatterns = {"/ajout_quiz"})
-public class AjoutQuiz extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       resp.sendRedirect("AjoutQuizNom.jsp");
-    }
-
+@WebServlet(name = "RetourVersListeQuestions", urlPatterns = {"/RetourVersListeQuestions"})
+public class RetourVersListeQuestions extends HttpServlet {
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String nom=req.getParameter("nom");
-        Quiz quiz=new Quiz();
-        quiz.setNom(nom);
-        new QuizService().AjouterQuiz(quiz);
-        
-        List<Question> listeQuestion=new QuestionService().ListerQuestions();
+        List<Question> listeQuestion = new QuestionService().ListerQuestions();
         req.setAttribute("listeQuestion", listeQuestion);
-        req.getSession().setAttribute("Quiz", quiz);
+
+        
         req.getRequestDispatcher("QuizQuestion.jsp").forward(req, resp);
     }
-   
-
+    
 }
